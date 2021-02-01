@@ -16,30 +16,20 @@ h1 {
   font-weight: 700;
   font-size: 2rem;
   letter-spacing: 1px;
-  color: #30e3ca;
+  color: #ffffff;
   position: relative;
   display: inline-block;
 }
 
-h1::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 100%;
-  height: 5px;
-  width: 100%;
-  background-image: linear-gradient(to right, #2f89fc, #30e3ca);
-}
-
 h2 {
-  color: #30e3ca;
-  font-size: 1.50rem;
+  font-size: 1.25rem;
   margin-bottom: .5rem;
 }
 
 h3 {
   color: #2f89fc;
   font-size: 1rem;
+  font-weight: 500;
   margin-bottom: .5rem;
 }
 
@@ -49,57 +39,29 @@ h3 {
   *********
 */
 .wrapper {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(1px, calc(1200px / 5)));
-  justify-content: center;
-  grid-template-areas: 
-    "header header header header header"
-    "heading heading heading heading heading"
-    "aside main main main main"
-    "footer footer footer footer footer";
-  grid-gap: 1rem;
+  max-width: 1000px;
+  margin: 1rem auto;
 }
 
-/* Header */
+/* Header & Footer */
 header {
-  grid-area: header;
-  position: relative;
-  padding: 1rem;
-  background-color: #f5f5f5;
-  box-shadow: 0 5px 10px rgba(0,0,0,.1);
+  padding: .5rem 1rem;
+  background-color: rgb(3,37,65);
+  box-shadow: 0 9px 10px rgba(0,0,0,.2);
 }
 
-header .logo {
-  width: fit-content;
-  height: 30px;
-  position: relative;
-}
-
-header .logo svg {
-  height: 100%;
-  width: auto;
-}
-
-.heading {
-  grid-area: heading;
-}
-
-/* Aside */
+/* Aside*/
 aside {
-  grid-area: aside;
-  background-color: #f5f5f5;
-  padding: .5rem;
-  border-radius: 10px;
-}
-
-/* Main */
-main {
-  grid-area: main;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,.1);
+  /* border-radius: 10px; */
 }
 
 /* Footer */
 footer {
-  grid-area: footer;
+  padding: .5rem 1rem;
+  background-color: #f5f5f5;
 }
 
 /* 
@@ -136,23 +98,23 @@ input[type="search"] {
 }
 
 .label-radio {
-  font-size: .90rem;
+  font-size: .75rem;
+  font-weight: 400;
   display: inline-block;
   padding: .25rem .5rem;
   border: 1px solid #40514e;
-  background-color: #e7eceb;
   border-radius: 50px;
   cursor: pointer;
   margin: .25rem;
-  font-weight: 500;
   text-transform: capitalize;
   letter-spacing: .7px;
-  transition: background 250ms;
 }
 
 .label-radio:hover,
 .label-radio:focus {
-  background-color: #c1cecc;
+  background-color: #2f89fc;
+  border-color: #2f89fc;
+  color: #ffffff;
 }
 
 input[type="radio"] {
@@ -164,5 +126,73 @@ input[type="radio"] {
 }
 
 input[type="radio"]:checked ~ .label-radio {
-  background-color: #c1cecc;
+  background-color: #2f89fc;
+  border-color: #2f89fc;
+  color: #ffffff;
+}
+
+/* 
+  *********
+    Card
+  *********
+*/
+
+.cards {
+  width: 100%;
+  grid-gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 230px);
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0,0,0,.1);
+  position: relative;
+  border-radius: 10px;
+}
+
+.card-title {
+  margin: .5rem 1rem;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.card-image {
+  order: -1;
+  height: 250px;
+  background-color: rgba(0,0,0,.1);
+  background-image: url('../images/image.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-release-date {
+  margin: .5rem 1rem;
+  font-size: .85rem;
+  color: rgba(0,0,0,.7);
+}
+
+.card-rating {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  height: 40px;
+  width: 40px;
+  background-color: rgba(0,0,0,.7);
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#rating {
+  font-weight: 700;
+  font-size: .75rem;
 }
