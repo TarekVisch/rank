@@ -12,19 +12,19 @@ async function getMovies() {
 
   const mainContent = document.getElementById('main-content');
   mainContent.innerHTML = `
-      <div class="cards">
-        ${data.results.map(movie => {
-          return `<div class="card">
-                  <p class="card-title">${movie.title}</p>
+    <div class="cards">
+      ${data.results.map(movie => {
+        return `<div class="card">
                   <div class="card-image"></div>
-                  <p class="card-release-date">${movie.release_date}</p>
-                  <div class="card-rating">
-                    <p id="rating">${movie.vote_average != 0 ? movie.vote_average : 'NR'}</p>
+                  <div class="card-title">${movie.title}</div>
+                  <div class="card-date">${movie.release_date}</div>
+                  <div class="card-info">
+                    <div class="card-info-title">${movie.title}</div>
+                    <div class="card-info-body">${movie.overview}</div>
                   </div>
                 </div>`
-        }).join('')}
-      </div>
-  `;
+      }).join('')}
+    </div>`;
 }
 
-// getMovies().catch(err => console.error(`Error: ${err}`));
+getMovies().catch(err => console.error(`Error: ${err}`));
