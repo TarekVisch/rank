@@ -27,4 +27,4 @@ async function getMovies() {
   `;
 }
 
-getMovies().catch(err => console.error(`Error: ${err}`));
+// getMovies().catch(err => console.error(`Error: ${err}`));
