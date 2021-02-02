@@ -1,11 +1,12 @@
 const apiKey = '49bd23941e1f05cff62a609926ad2acb';
 const formBy = document.getElementById('formBy');
 const formGenre = document.getElementById('formGenre');
-// const pagePrev = document.getElementById('pagePrev');
-// const pageNext = document.getElementById('pageNext');
+const pagePrev = document.getElementById('pagePrev');
+const pageNext = document.getElementById('pageNext');
+const pageDOM = document.getElementById('page');
 let sortBy = '';
 let genre = '';
-let page = '&page=1';
+let page = 1;
 
 /* Sort Movies */
 formBy.addEventListener('change', (e)=> {
@@ -23,7 +24,7 @@ formBy.addEventListener('change', (e)=> {
       break;
   }
 
-  page = '&page=1';
+  page = 1;
   getMovies();
 })
 
@@ -70,16 +71,28 @@ formGenre.addEventListener('change', (e) => {
       break;
   }
 
-  page = '&page=1';
+  page = 1;
   getMovies();
 })
 
 async function getMovies() {
-  const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}${genre}${sortBy}${page}`;
-  console.log(url);
+  const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}${genre}${sortBy}&page=${page}`;
 
   const reponse = await fetch(url);
   const data = await reponse.json();
+
+  pageDOM.textContent = page
+
+  if(page === 1) {
+    pagePrev.disabled = true;
+  } else {
+    pagePrev.disabled = false;
+  }
+  if(page >= 20) {
+    pageNext.disabled = true;
+  } else {
+    pageNext.disabled = false;
+  }
 
   const mainContent = document.getElementById('main-content');
   mainContent.innerHTML = `
@@ -98,6 +111,16 @@ async function getMovies() {
       }).join('')}
     </div>`;
 }
+
+// pagination
+pagePrev.addEventListener('click', () => {
+  page--;
+  getMovies();
+});
+pageNext.addEventListener('click', () => {
+  page++;
+  getMovies();
+});
 
 getMovies().catch(err => console.error(`Error: ${err}`));
 
