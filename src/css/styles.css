@@ -181,8 +181,8 @@ input[type="radio"]:checked ~ .label-radio {
   background-color: #ccc;
   background-image: url('../images/image.svg');
   background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
+  background-size: cover;
+  background-position: top;
 }
 
 .card-title {
