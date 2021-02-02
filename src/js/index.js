@@ -1,4 +1,4 @@
-const apiKey = '49bd23941e1f05cff62a609926ad2acb';
+const apiKey = 'TMDb API KEY';
 const formBy = document.getElementById('formBy');
 const formGenre = document.getElementById('formGenre');
 const pagePrev = document.getElementById('pagePrev');
