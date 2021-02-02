@@ -85,6 +85,7 @@ async function getMovies() {
                   <div class="card-image" style="${movie.poster_path ? `background-image: url('https://image.tmdb.org/t/p/w342/${movie.poster_path}')` : ''}"></div>
                   <div class="card-title">${movie.title}</div>
                   <div class="card-date">${movie.release_date}</div>
+                  <div class="card-rating">${movie.vote_average*10}%</div>
                   <div class="card-info">
                     <div class="card-info-title">${movie.title}</div>
                     <div class="card-info-body">${movie.overview}</div>
