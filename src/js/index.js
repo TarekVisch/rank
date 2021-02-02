@@ -1,9 +1,11 @@
 const apiKey = '49bd23941e1f05cff62a609926ad2acb';
 const formBy = document.getElementById('formBy');
 const formGenre = document.getElementById('formGenre');
+// const pagePrev = document.getElementById('pagePrev');
+// const pageNext = document.getElementById('pageNext');
 let sortBy = '';
 let genre = '';
-let page = '';
+let page = '&page=1';
 
 /* Sort Movies */
 formBy.addEventListener('change', (e)=> {
@@ -21,6 +23,7 @@ formBy.addEventListener('change', (e)=> {
       break;
   }
 
+  page = '&page=1';
   getMovies();
 })
 
@@ -67,11 +70,12 @@ formGenre.addEventListener('change', (e) => {
       break;
   }
 
+  page = '&page=1';
   getMovies();
 })
 
 async function getMovies() {
-  const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}${genre}${sortBy}`;
+  const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}${genre}${sortBy}${page}`;
   console.log(url);
 
   const reponse = await fetch(url);
@@ -96,3 +100,4 @@ async function getMovies() {
 }
 
 getMovies().catch(err => console.error(`Error: ${err}`));
+

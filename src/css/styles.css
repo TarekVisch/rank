@@ -273,3 +273,37 @@ input[type="radio"]:checked ~ .label-radio {
   line-height: 1.5;
 }
 
+
+/* 
+  *********
+  Pagination
+  *********
+*/
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  width: 250px;
+  margin: 1rem auto;
+}
+
+.pagination button {
+  height: 30px;
+  width: 30px;
+  background: 0;
+  border: 0;
+  cursor: pointer;
+}
+
+.pagination button svg {
+  fill: #90cea1;
+}
+
+.pagination button:disabled svg {
+  fill: rgba(0,0,0,.2);
+}
+
+.pagination button:not(:disabled):hover svg,
+.pagination button:not(:disabled):focus svg {
+  fill: #01b4e4;
+}
